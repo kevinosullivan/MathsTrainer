@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <title>AngularJS Material App</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+  <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+
+<body ng-app="starterApp" layout="column" ng-controller="MainCtrl">
+
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <span ng-show="countdownSeconds">{{countdownSeconds}} seconds left</span>
+      <span flex></span>
+      <span ng-show="countdownSeconds">Score: {{score}} </span>
+      <!-- fill up the space between left and right area -->
+      <span flex></span>
+      <md-button class="md-raised md-primary md-warn" ng-show="countdownSeconds==0" ng-click="onClickStart()">Start</md-button>
+      <md-button class="md-raised md-primary md-warn" ng-show="countdownSeconds>0" ng-click="onClickStart()">Restart!</md-button>
+    </div>
+  </md-toolbar>
+  <md-content>
+    <p ng-show="countdownSeconds>0" style="text-align: center; font-size: 30px;">{{sum1}} {{operand}} {{sum2}} = {{answer}}</p>
+    <p ng-show="countdownSeconds==0" style="text-align: center; font-size: 30px;">Press start...</p>
+  </md-content>
+  <md-content class="md-padding" layout-margin layout-fill layout-padding>
+
+    <section layout="row" layout-sm="column" layout-align="center center"  layout-margin layout-fill layout-padding>
+
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('1')">1</md-button>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('2')">2</md-button>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('3')">3</md-button>
+      <md-button class="md-fab" ng-disabled="countdownSeconds==0 || answer=='?'" aria-label="Answer" ng-click="onClickAnswer()">
+        <md-icon md-svg-src="./bower_components/material-design-icons/action/svg/production/ic_done_48px.svg"></md-icon>
+      </md-button>
+
+    </section>
+    <section layout="row" layout-sm="column" layout-align="center center"  layout-margin layout-fill layout-padding>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('4')">4</md-button>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('5')">5</md-button>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('6')">6</md-button>
+      <md-button class="md-fab" ng-disabled="countdownSeconds==0 || answer=='?'"  aria-label="Delete" ng-click="onClickDelete()">
+        <md-icon md-svg-src="./bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+      </md-button>
+    </section>
+
+    <section layout="row" layout-sm="column" layout-align="center center"  layout-margin layout-fill layout-padding>
+
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('7')">7</md-button>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('8')">8</md-button>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('9')">9</md-button>
+      <md-button class="md-raised md-primary keypad_button" ng-disabled="countdownSeconds==0" ng-click="onClickNumber('0')">0</md-button>
+    </section>
+    <div growl></div>
+    </md-content>
+
+</div>
+
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-route/angular-route.js"></script>
+<script src="./bower_components/angular-aria/angular-aria.js"></script>
+<script src="./bower_components/angular-animate/angular-animate.js"></script>
+<script src="./bower_components/angular-material/angular-material.js"></script>
+
+<script src="scripts/app.js"></script>
+
+
+</body>
+</html>
